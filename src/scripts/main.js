@@ -1,14 +1,14 @@
 'use strict';
 
-const inputs = document.querySelectorAll('input');
+const inputs = document.querySelectorAll('form input');
 
 inputs.forEach((input) => {
-  if (!input.id) {
-    input.id = `${input.name}-input`;
-  }
-
   if (!input.name) {
     return;
+  }
+
+  if (!input.id) {
+    input.id = `${input.name}-input`;
   }
 
   if (
@@ -26,5 +26,5 @@ inputs.forEach((input) => {
   label.htmlFor = input.id;
   label.textContent = labelText;
   input.placeholder = labelText;
-  input.parentNode.appendChild(label);
+  input.parentNode.insertBefore(label, input);
 });
